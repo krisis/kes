@@ -201,12 +201,22 @@ func serverCmd(args []string) {
 	defer cache.Stop()
 
 	for _, k := range config.Keys {
-		bytes, err := sioutil.Random(key.Size)
+		var algorithm key.Algorithm
+		if sioutil.NativeAES() || fips.Enabled {
+			algorithm = key.AES256_GCM_SHA256
+		} else {
+			algorithm = key.XCHACHA20_POLY1305
+		}
+
+		bytes, err := sioutil.Random(algorithm.KeySize())
 		if err != nil {
 			cli.Fatalf("failed to create key %q: %v", k.Name, err)
 		}
-
-		if err = store.Create(ctx, k.Name.Value(), key.New(bytes)); err != nil && err != kes.ErrKeyExists {
+		key, err := key.New(algorithm, bytes, config.Admin.Identity.Value())
+		if err != nil {
+			cli.Fatalf("failed to create key %q: %v", k.Name, err)
+		}
+		if err = store.Create(ctx, k.Name.Value(), key); err != nil && !errors.Is(err, kes.ErrKeyExists) {
 			cli.Fatalf("failed to create key %q: %v", k.Name.Value(), err)
 		}
 	}

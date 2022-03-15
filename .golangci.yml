@@ -25,8 +25,9 @@ linters:
 issues:
   exclude-use-default: false
   exclude:
-      - error strings should not be capitalized or end with punctuation or a newline
-      - should have comment           # TODO(aead): Remove once all exported ident. have comments!
+      - "error strings should not be capitalized or end with punctuation or a newline"
+      - "should have comment"           # TODO(aead): Remove once all exported ident. have comments!
+      - "var-naming: don't use ALL_CAPS in Go names; use CamelCase"
 
 service:
   golangci-lint-version: 1.43.0 # use the fixed version to not introduce new linters unexpectedly

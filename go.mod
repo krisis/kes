@@ -19,6 +19,7 @@ require (
 	github.com/prometheus/common v0.30.0
 	github.com/secure-io/sio-go v0.3.1
 	github.com/spf13/pflag v1.0.5
+	github.com/tinylib/msgp v1.1.6
 	golang.org/x/crypto v0.0.0-20211209193657-4570a0811e8b
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c
 	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1
@@ -66,6 +67,7 @@ require (
 	github.com/muesli/reflow v0.2.1-0.20210115123740-9e1d0d53df68 // indirect
 	github.com/muesli/termenv v0.11.1-0.20220204035834-5ac8409525e0 // indirect
 	github.com/nsf/termbox-go v0.0.0-20190121233118-02980233997d // indirect
+	github.com/philhofer/fwd v1.1.1 // indirect
 	github.com/pierrec/lz4 v2.5.2+incompatible // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
