@@ -110,8 +110,8 @@ func (c *ciphertext) UnmarshalBinary(b []byte) error {
 
 	c.Algorithm = Algorithm(algorithm)
 	c.ID = id
-	c.IV = clone(iv[:]...)
-	c.Nonce = clone(nonce[:]...)
+	c.IV = iv[:]
+	c.Nonce = nonce[:]
 	c.Bytes = clone(bytes...)
 	return nil
 }
